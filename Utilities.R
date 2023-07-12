@@ -198,7 +198,8 @@ medips.cpg.enrichment.reference.genome <- function(BSgenome="BSgenome.Hsapiens.U
   }
   
   # saves the genomic database
-  dataset = get(ls(paste("package:", BSgenome, sep = "")))
+  # EDIT: newer versions of BSgenome import two objects but only the first object is relevant
+  dataset = get(ls(paste("package:", BSgenome, sep = ""))[1])
   
   cat(paste("Calculating CpG density for the reference genome",BSgenome, "...\n", sep = " "))
 
@@ -284,7 +285,8 @@ medips.cpg.enrichment <- function(file, BSgenome="BSgenome.Hsapiens.UCSC.hg19", 
   }
   
   # saves the genomic database
-  dataset = get(ls(paste("package:", BSgenome, sep = "")))
+  # EDIT: newer versions of BSgenome import two objects but only the first object is relevant
+  dataset = get(ls(paste("package:", BSgenome, sep = ""))[1])
   
   # GRange.Reads saves the passed file name into a GRange object
   if (!paired) {
